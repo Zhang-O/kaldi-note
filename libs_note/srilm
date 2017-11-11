@@ -23,14 +23,32 @@
 #choice2: text->count count->lm
 #ngram-count -text ${text} -order 2 -sort -tolower -write ${count}
  
- 
- 
  >> cat source.txt   
  If you do want to use SRILM or are generally interested in it, please consider joining the SRILM user mailing list.
  
  >> ngram-count -text source.txt -lm source.lm   
  >> cat source.lm   
-  
+ \data  
+ngram 1=nr # 一元语言模型  
+ngram 2=nr # 二元语言模型  
+ngram 3=nr # 三元语言模型  
+   
+\1-grams:  
+pro_1 word1 back_pro1  
+   
+\2-grams:  
+pro_2 word1 word2 back_pro2  
+   
+\3-grams:  
+pro_3 word1 word2 word3  
+   
+\end\  
+
+# 第一项表示ngram的条件概率，就是P(wordN | word1，word2，。。。，wordN-1）。
+# 第二项表示ngram的词。
+# 最后一项是回退的权重。
+# http://blog.csdn.net/lv_xinmy/article/details/8595561
+ 
 >> cat source.dict   
 you  
 are  
