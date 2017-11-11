@@ -1,0 +1,43 @@
+ SRILM是著名的约翰霍普金斯夏季研讨会（Johns Hopkins Summer Workshop）的产物，诞生于1995年，由SRI实验室的Andreas Stolcke负责开发维护. 
+ http://www.speech.sri.com/projects/srilm/
+ http://www.speech.sri.com/projects/srilm/manpages/
+ 
+一、基本训练
+##参数
+#输入文本：
+#  -read 读取count文件
+#  -text 读取分词后的文本文件
+#词典文件：
+#  -vocab 限制text和count文件的单词，没有出现在词典的单词替换为<unk>；如果没有，所有的单词将会被自动加入词典
+#  -limit-vocab 只限制count文件的单词（对text文件无效），没有出现在词典里面的count将会被丢弃
+#  -write-vocab 输出词典
+#语言模型：
+#  -lm 输出语言模型
+#  -write-binary-lm 输出二进制的语言模型
+#  -sort 输出语言模型gram排序
+ 
+ 
+#choice1: text->count->lm
+#ngram-count -text $text -vocab ${vocab} -order 2 -sort -tolower -lm ${arpa}
+
+#choice2: text->count count->lm
+#ngram-count -text ${text} -order 2 -sort -tolower -write ${count}
+ 
+ 
+ 
+ >> cat source.txt   
+ If you do want to use SRILM or are generally interested in it, please consider joining the SRILM user mailing list.
+ 
+ >> ngram-count -text source.txt -lm source.lm   
+ >> cat source.lm   
+  
+>> cat source.dict   
+you  
+are  
+list  
+please  
+
+>> ngram-count -text source.txt -lm source.lm -vocab source.dict 
+
+
+
