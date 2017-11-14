@@ -1,1 +1,9 @@
 This file will be some notes on the api func in details.
+
+
+# $1 is the mfcc-features-file or stream('-'), '-' means output data stream in the shell, the stream is bytes by default
+copy-feats ark:$1 ark:-
+# $1 is the mfcc-features-file or stream('-'), '-' means output data stream in the shell, the stream is text
+copy-feats ark:$1 ark,t:-
+# $2 is a file to save byte stream data.('ark,t' means saving text stream)
+copy-feats ark:$1 ark:$2
