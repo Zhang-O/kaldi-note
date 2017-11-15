@@ -18,3 +18,11 @@ copy-feats ark:$1 ark,t:-
 copy-feats ark:$1 ark:$2
 # copy mfcc-feats-file to $ark(bytes or text) and $scp
 copy-feats --compress=true ark:$1 ark,[t,]scp:$ark,$scp
+
+
+
+compute-cmvn-stats scp:$f2.scp ark,scp:$test-cmvn.ark,$test-cmvn.scp
+apply-cmvn scp:./test-cmvn.scp scp:./QT-742440ans.wav.scp ark,t:-
+
+
+
