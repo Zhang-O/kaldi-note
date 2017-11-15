@@ -1,4 +1,7 @@
-This file will be some notes on the api func in details.
+# This file will be some notes on the api func in details.
+# ark defaults to bytes,and 'ark ,t' refers to text
+
+
 
 
 # $1 is the mfcc-features-file or stream('-'), '-' means output data stream in the shell, the stream is bytes by default
@@ -7,3 +10,5 @@ copy-feats ark:$1 ark:-
 copy-feats ark:$1 ark,t:-
 # $2 is a file to save byte stream data.('ark,t' means saving text stream)
 copy-feats ark:$1 ark:$2
+# copy mfcc-feats-file to $ark(bytes or text) and $scp
+copy-feats --compress=true ark:$1 ark,[t,]scp:$ark,$scp
