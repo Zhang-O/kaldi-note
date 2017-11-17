@@ -1,1 +1,35 @@
+LM :
+
+./lang/
+words.txt :word -> number
+phones.txt :phone -> number (<eps> 0 means epsilon transition)
+
+./lang/phones/
+silence.txt: phone of silence
+silence.int: number of phones of silence
+silence.csl: all the numbers of phones of silence (seperated by ':')
+
+nonsilence.txt: phone of noesilence
+nonsilence.int: number of phone of nonsilence
+nonsilence.csl: all the numbers of phones of nonsilence (seperated by ':')
+
+disambig.int  disambig.int disambig.int are same as above .they are for disambiguate.
+
+optional_silence.int  optional_silence.int optional_silence.int are same as above. they only contain a 'SIL' phone.
+
+context_indep.int context_indep.txt context_indep.csl are same as silence.*.  they are for what? context dependent?
+
+align_lexicon.int align_lexicon.txt  no idea what it is?
+
+extra_questions.int extra_questions.txt no idea what it is?
+
+roots.int roots.txt no idea
+sets.int sets.txt no idea
+word_boundary.int  word_boundary.txt  
+
+
+
+
+
+
 
