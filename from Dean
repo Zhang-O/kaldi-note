@@ -1,4 +1,16 @@
+CTC可以说是现在端到端语音识别系统的标配，它解决了文本序列和神经网络模型输出的一对多映射问题，因此可以搭建端到端系统
+
+CE constant eventmap
+TE table eventmap
+SE split eventmap
+
 LM :
+
+fstprint --isymbols=data/lang/phones.txt --osymbols=./data/lang/words.txt data/lang/L.fst |head
+gmm-copy --binary=false ../../ScoringScript/mdl/tri/final.mdl -
+grep Overall exp/mono0a/log/acc.{?.?,?.??,??.?,??.??}.log
+
+
 
 ./lang/
 words.txt :word -> number
