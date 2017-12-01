@@ -25,4 +25,25 @@ compute-cmvn-stats scp:$f2.scp ark,scp:$test-cmvn.ark,$test-cmvn.scp
 apply-cmvn scp:./test-cmvn.scp scp:./QT-742440ans.wav.scp ark,t:-
 
 
+'''
+./online2-wav-nnet3-latgen-faster --do-endpointing=false --online=false --feature-type=fbank 
+	--fbank-config=../../egs/cvte/s5/conf/fbank.conf 
+	--max-active=7000 --beam=15.0 --lattice-beam=6.0 --acoustic-scale=1.0 
+	--word-symbol-table=../../egs/cvte/s5/exp/chain/tdnn/graph/words.txt 
+	../../egs/cvte/s5/exp/chain/tdnn/final.mdl 
+	../../egs/cvte/s5/exp/chain/tdnn/graph/HCLG.fst 
+	'ark:echo utter1 utter1|' 'scp:echo utter1 ../../egs/cvte/s5/data/wav/00030/2017_03_07_16.57.22_1175.wav|' ark:/dev/null
+
+online2-wav-nnet3-latgen-faster：是调用来进行识别的命令
+后面跟着的那些是参数设置和输入的文件和模型
+words.txt词表
+final.mdl训练好的声学模型
+HCLG.fst
+H:HMM，输出符表示上下文相关的音素
+C：表上下文关系，输出是音素，输入是上下文相关的N个音素组成的窗
+L：lexicon发音词典，输出是词，输入是音素
+G：语法
+最后那个WAV是你要识别的语音。
+'''
+
 
